@@ -24,9 +24,9 @@
  4. Run the below code to test the DAEFormer on the synapse dataset.
 
     ```bash
-    python test.py --volume_path ./data/Synapse/ --output_dir './model_out'
+    python test.py --volume_path ./data/Synapse/ --model './model_out/best_model.pth'
     ```
 
     **--volume_path**   [Root dir of the test data]
         
-    **--output_dir**    [Directory of your learned weights]
+    **--model**    [Your learned weights]
