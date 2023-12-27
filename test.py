@@ -31,11 +31,11 @@ parser.add_argument("--max_epochs", type=int, default=500, help="maximum epoch n
 parser.add_argument("--batch_size", type=int, default=24, help="batch_size per gpu")
 parser.add_argument("--img_size", type=int, default=224, help="input patch size of network input")
 parser.add_argument("--is_savenii", action="store_true", help="whether to save results during inference")
-parser.add_argument("--test_save_dir", type=str, default="../predictions", help="saving prediction as nii!")
+parser.add_argument("--test_save_dir", type=str, default="./predictions", help="saving prediction as nii!")
 parser.add_argument("--deterministic", type=int, default=1, help="whether use deterministic training")
 parser.add_argument("--base_lr", type=float, default=0.05, help="segmentation network learning rate")
 parser.add_argument("--seed", type=int, default=1234, help="random seed")
-parser.add_argument("--model", type=str, default="../Bestmodel8313/synapse_epoch_479.pth", help="the test model")
+parser.add_argument("--model", type=str, default="./model_out/best_model.pth", help="the test model")
 # parser.add_argument('--cfg', type=str, required=True, metavar="FILE", help='path to config file', )
 parser.add_argument(
     "--opts",
@@ -76,10 +76,8 @@ if args.dataset == "Synapse":
 
 # config = get_config(args)
 
-# 在这里修改了一个split，设置成只需要test1个,acdc是需要改为test
 def inference(args, model, test_save_path=None):
-    # db_test = args.Dataset(base_dir=args.volume_path, split="test_vol", img_size=args.img_size, list_dir=args.list_dir)
-    db_test = args.Dataset(base_dir=args.volume_path, split="test", img_size=args.img_size, list_dir=args.list_dir)
+    db_test = args.Dataset(base_dir=args.volume_path, split="test_vol", img_size=args.img_size, list_dir=args.list_dir)
     testloader = DataLoader(db_test, batch_size=1, shuffle=False, num_workers=1)
     logging.info("{} test iterations per epoch".format(len(testloader)))
     model.eval()
