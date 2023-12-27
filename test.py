@@ -136,9 +136,7 @@ if __name__ == "__main__":
     net = MyFormer(num_classes=args.num_classes).cuda(0)
 
     snapshot = args.model
-    # snapshot = os.path.join(args.output_dir, "best_model.pth")
-    if not os.path.exists(snapshot):
-        snapshot = snapshot.replace("best_model", "transfilm_epoch_" + str(args.max_epochs - 1))
+    
     msg = net.load_state_dict(torch.load(snapshot)['model'])
     print("self trained swin unet", msg)
     snapshot_name = snapshot.split("/")[-1]
