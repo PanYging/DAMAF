@@ -7,17 +7,6 @@
 
 ```bash
 .
-├── TransUNet
-│   ├──datasets
-│   │       └── dataset_*.py
-│   ├──train.py
-│   ├──test.py
-│   └──...
-├── model
-│   └── vit_checkpoint
-│       └── imagenet21k
-│           ├── R50+ViT-B_16.npz
-│           └── *.npz
 └── data
     └──Synapse
         ├── test_vol_h5
